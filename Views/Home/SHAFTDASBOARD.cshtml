@@ -1,0 +1,108 @@
+﻿@model IEnumerable<QMS.Models.DOCREQ>
+
+@{
+    ViewData["Title"] = "List";
+}
+
+<h3>Document Request List</h3>
+
+<p>
+    <a asp-action="request">Create Document Request</a>
+</p>
+<table class="table table-striped table-bordered" id="tabel">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reqtype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Docnumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reqinitiatedate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prioritydoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuditNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Docowner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TechnicalData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SmartsolveUpload)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.Closestatus)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Closedate)
+            </th>
+            <th> Action </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reqtype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Docnumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Doctype)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reqinitiatedate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prioritydoc)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuditNo)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Docowner)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TechnicalData)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SmartsolveUpload)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Closestatus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Closedate)
+                </td>
+                <td>
+                    <a asp-action="request" asp-route-id="@item.Id"><i title ="request" class="fa-sharp fa-solid fa-pen-to-square"></i></a> |
+                    <a asp-action="Approval" asp-route-id="@item.Id"><i title ="approval" class="fa-solid fa-clipboard-check"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $('#tabel').DataTable(
+            {
+                dom: 'Bfrtip',
+                buttons: [
+                    'copy', 'csv', 'excel', 'pdf', 'print'
+                ]
+            }
+        );
+    });
+</script>

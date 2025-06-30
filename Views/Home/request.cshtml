@@ -1,0 +1,703 @@
+﻿@model QMS.Models.DOCREQ
+
+@{
+    ViewData["Title"] = "request";
+}
+
+<h3>Document Request @ViewBag.tes</h3>
+<br />
+<h6 style="color:gray">Please complete this form </h6>
+<hr />
+<div class="row">
+    <div class="col-12">
+        <form asp-action="request" asp-route-id="@Model.Id" enctype="multipart/form-data">
+            <div class="form-group" style="display:none;">
+                <label asp-for="Id" class="control-label"></label>
+                <input asp-for="Id" class="form-control" />
+                <span asp-validation-for="Id" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Reqtype" class="control-label"></label>
+                <select asp-for="Reqtype" class="form-control">
+                    @*<select class="form-control input-validation-error" id="Reqtype" name="Reqtype" aria-invalid="true" required="" aria-describedby="Reqtype-error">*@
+                    <option selected="" disabled="">--Select--</option>
+                    <option value="New Document">New Document</option>
+                    <option value="Document Revision">Document Revision</option>
+                    <option value="Obsolete Document">Obsolete Document</option>
+                </select>
+
+                @*<select asp-for="Reqtype" class="form-control">
+               <option selected="" disabled="">--Select--</option>
+               <option value="New Document">New Document</option>
+               <option value="Document Revision">Document Revision</option>
+               <option value="Obsolete Document">Obsolete Document</option>
+            </select>*@
+                <span asp-validation-for="Reqtype" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="documentReason" class="control-label"></label>
+                <input asp-for="documentReason" class="form-control" />
+                @*<input asp-for="documentReason" class="form-control input-validation-error" id="documentReason" name="documentReason" aria-invalid="true" required="" aria-describedby="documentReason-error">*@
+                <span asp-validation-for="documentReason" class="text-danger"></span>
+                <!--<select class="form-control input-validation-error" id="documentReason" name="documentReason" aria-invalid="true" required="" aria-describedby="documentReason-error">-->
+                @*<option selected="" disabled="">--Select--</option>*@
+                @*</select>*@
+            </div>
+            <!--<div class="form-group">
+        <label asp-for="Docreason" class="control-label"></label>
+        <input asp-for="Docreason" class="form-control" />
+        <span asp-validation-for="Docreason" class="text-danger"></span>
+    </div>-->
+
+            <div class="row">
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="Functgroup" class="control-label"></label>
+                        @*<select asp-for="Functgroup" class="form-control">*@
+                        <select asp-for="Functgroup" class="form-control">
+                            <option selected="" disabled="">--Select--</option>
+                            <option value="Operation">Operation (OE)</option>
+                            <option value="EHS">EHS</option>
+                            <option value="QI">Quality (QI)</option>
+                            <option value="Core">CORE & IE</option>
+                            <option value="Engineering">Engineering (PM)</option>
+                            <option value="Finance">Finance (FI)</option>
+                            <option value="ITC">ITC</option>
+                            <option value="HR">HR</option>
+                            <option value="MM">Material Management/SCM</option>
+                            <option value="CS">SIOP</option>
+                            <option value="others">Others</option>
+
+                        </select>
+                        <span asp-validation-for="Functgroup" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="form-group">
+                        <label asp-for="FunctgroupOthers" class="control-label"></label>
+                        <input asp-for="FunctgroupOthers" class="form-control" />
+                        <span asp-validation-for="FunctgroupOthers" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Docnumber" class="control-label"></label>
+                <input asp-for="Docnumber" class="form-control" /> @*input-validation-error" id="Docnumber" name="Docnumber" aria-invalid="true" required="" aria-describedby="Docnumber-error"/>*@
+                <span asp-validation-for="Docnumber" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display: none">
+                <label asp-for="LinkDoc" class="control-label"></label>
+                <input asp-for="LinkDoc" class="form-control" />
+                <span asp-validation-for="LinkDoc" class="text-danger"></span>
+
+            </div>
+            <div class="form-group">
+                <label for="Fileupload" class="control-label"> File Upload </label>
+                <input id="Fileupload" type="file" name="Fileupload" class="form-control" multiple="multiple" />
+                <a href="~/NOVI.SUSANTI/@Model.LinkDoc" target="_blank">@Model.LinkDoc</a>
+            </div>
+            <div class="form-group">
+                <label asp-for="Associateddoc" class="control-label"></label>
+                <input asp-for="Associateddoc" class="form-control" /> @*input-validation-error" id="Associateddoc" name="Associateddoc" aria-invalid="true" required="" aria-describedby="Associateddoc-error" />*@
+                <span asp-validation-for="Associateddoc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Doctype" class="control-label"></label>
+                <select asp-for="Doctype" class="form-control" id="doctype-select">
+                    @*<select class="form-control input-validation-error" id="Doctype" name="Doctype" aria-invalid="true" required aria-describedby="Doctype-error">*@
+                    <option selected="" disabled="">--Select--</option>
+                    <option value="POL">Policy (POL)</option>
+                    <option value="PRO">Procedure (PRO)</option>
+                    <option value="WI">Work Instruction (WI)</option>
+                    <option value="WS">Work Standard (WS)</option>
+                    <option value="TS">Tecnique Sheet (TS)</option>
+                    <option value="Form">Form (FRM)</option>
+                </select>
+                <span asp-validation-for="Doctype" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Superseededdoc" class="control-label"></label>
+                <input asp-for="Superseededdoc" class="form-control"> @*input-validation-error" id="Superseededdoc" name="Superseededdoc" aria-invalid="true" required="" aria-describedby="Superseededdoc-error"/>*@
+                <span asp-validation-for="Superseededdoc" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none">
+                <label asp-for="Reqinitiatedate" class="control-label"></label>
+                <input asp-for="Reqinitiatedate" class="form-control">
+                <span asp-validation-for="Reqinitiatedate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Prioritydoc" class="control-label"></label>
+                <select asp-for="Prioritydoc" class="form-control">
+
+                    @*<select class="form-control input-validation-error" id="Prioritydoc" name="Prioritydoc" aria-invalid="true" required="" aria-describedby="Prioritydoc-error">*@
+                    <option selected="" disabled="">--Select--</option>
+
+                    <option value="Standard Major">Standard Major = 30 working days</option>
+                    <option value="Standard Minor">Standard Minor = 20 working days</option>
+                    <option value="Fast Track">Fast Track = 10 working days</option>
+                    <option value="Administrative">Administrative = 5 working days</option>
+                </select>
+                <span asp-validation-for="Prioritydoc" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="AuditNo" class="control-label"></label>
+                <input asp-for="AuditNo" class="form-control">
+                <span asp-validation-for="AuditNo" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" style="display:none;">
+                <label asp-for="Docowner" class="control-label"></label>
+                <input asp-for="Docowner" class="form-control" />
+                <span asp-validation-for="Docowner" class="text-danger"></span>
+            </div>
+            <div class="form-group" style="display:none;">
+                <label asp-for="Docownerdate" class="control-label"></label>
+                <input asp-for="Docownerdate" class="form-control" />
+                <span asp-validation-for="Docownerdate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Finalapprovername" class="control-label"></label>
+                <select asp-for="Finalapprovername" class="form-control" asp-items="@ViewBag.docown">
+
+                    @*<select class="form-control input-validation-error" id="Finalapprovername" name="Finalapprovername" aria-invalid="true" required="" aria-describedby="Finalapprovername-error">*@
+                    <option selected="" disabled="">--Select--</option>
+
+                </select>
+                <span asp-validation-for="Finalapprovername" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="SMEname" class="control-label"></label>
+                <select asp-for="SMEname" class="form-control" asp-items="@ViewBag.docown">
+                    <option selected="" disabled="">--Select--</option>
+                </select>
+
+                <span asp-validation-for="SMEname" class="text-danger"></span>
+            </div>
+          
+            <div class="form-group">
+
+                <label asp-for="ITCname" class="control-label"></label>
+                <select asp-for="ITCname" class="form-control" asp-items="@ViewBag.docitc">
+                    <option selected="" disabled="">--Select--</option>
+                </select>
+                <span asp-validation-for="ITCname" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="QMSASname" class="control-label"></label>
+                <select asp-for="QMSASname" class="form-control" asp-items="@ViewBag.docqms">
+                    <option selected="" disabled="">--Select--</option>
+                </select>
+                <span asp-validation-for="QMSASname" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="QMSNADCAPname" class="control-label"></label>
+                <select asp-for="QMSNADCAPname" class="form-control" asp-items="@ViewBag.docnadcap">
+                    <option selected="" disabled="">--Select--</option>
+                </select>
+                <span asp-validation-for="QMSNADCAPname" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Doccontrollername" class="control-label"></label>
+                <select asp-for="Doccontrollername" class="form-control" asp-items="@ViewBag.docon">
+                    <option selected="" disabled="">--Select--</option>
+                </select>
+                <span asp-validation-for="Doccontrollername" class="text-danger"></span>
+            </div>
+
+
+            <div class="form-group">
+                Ensure to Check The Document Changes Affected :
+                <table class="table table-bordered" style=" border: 1px solid black; padding-left :2px">
+                    <tr style=" border: 1px solid black">
+                        <th class="text-center" style=" border: 1px solid black"> Document Type </th>
+                        <th class="text-center" style=" border: 1px solid black"> PRO </th>
+                        <th class="text-center" style=" border: 1px solid black"> WI </th>
+                        <th class="text-center" style=" border: 1px solid black">WS</th>
+                        <th class="text-center" style=" border: 1px solid black">TS</th>
+                        <th class="text-center" style=" border: 1px solid black">FRM</th>
+                        <th class="text-center" style=" border: 1px solid black">APPM</th>
+                    </tr>
+                    <tr style=" border: 1px solid black" data-doctype="POL">
+                        <td class="text-center" style=" border: 1px solid black">POL</td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox" />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                    </tr>
+                    <tr style=" border: 1px solid black" data-doctype="PRO">
+                        <td class="text-center" style=" border: 1px solid black">PRO</td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                    </tr>
+                    <tr style=" border: 1px solid black" data-doctype="WI">
+                        <td class="text-center" style=" border: 1px solid black">WI</td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox" />
+                        </td>
+                    </tr>
+                    <tr style=" border: 1px solid black" data-doctype="WS">
+                        <td class="text-center" style=" border: 1px solid black" >WS</td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                    </tr>
+                    <tr style=" border: 1px solid black" data-doctype="TS">
+                        <td class="text-center" style=" border: 1px solid black">TS</td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                    </tr>
+                    <tr style=" border: 1px solid black" data-doctype="FRM">
+                        <td class="text-center" style=" border: 1px solid black">FRM</td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                        <td class="text-center" style=" border: 1px solid black"></td>
+                        <td class="text-center" style=" border: 1px solid black">
+                            <input type="checkbox" class="doc-affect-checkbox"  />
+                        </td>
+                    </tr>
+                </table>
+                <label class="font-weight-bold" style="margin-top:12px; display:block;">
+                    Please read the affected documents, according to the row highlighted in yellow.<br />
+                    Check whether these documents are impacted by this change.<br />
+                    Write the document names below.<br />
+                    Then, select "Yes" if the document is changed, or "No" if it is not affected.
+                </label>
+            </div>
+            <script>
+                function updateRequiredCheckboxes() {
+                    // Get selected doctype value
+                    var selected = $('#doctype-select').val();
+                    // Remove required from all checkboxes
+                    $('.doc-affect-checkbox').prop('required', false);
+                    $('.doc-affect-checkbox').prop('checked', false);
+                    // Reset all row backgrounds
+                    $('tr[data-doctype]').css('background-color', '');
+                    // Remove required from Listdoc/affected fields
+                    for (let i = 1; i <= 10; i++) {
+                        $('#Listdoc' + i).prop('required', false);
+                        $('#Listdoc' + i).parent().parent().parent().hide();
+                        $('#Listdocaffected' + i).prop('required', false);
+                    }
+                    // Add required only to checkboxes in the matching row and highlight row
+                    if (selected) {
+                        var rowKey = selected === "Form" ? "FRM" : selected;
+                        var $row = $('tr[data-doctype="' + rowKey + '"]');
+                        $row.find('.doc-affect-checkbox').prop('required', true);
+                        $row.find('.doc-affect-checkbox').prop('checked', true);
+
+                        // Disable all checkboxes outside of the selected row
+                        $('.doc-affect-checkbox').not($row.find('.doc-affect-checkbox')).prop('disabled', true);
+                        // Enable checkboxes in the selected row
+                        $row.find('.doc-affect-checkbox').prop('disabled', false);
+
+                        // Get the table headers for the checked checkboxes and store in an array
+                        var headers = [];
+                        headers.length = 0;
+                        $row.find('.doc-affect-checkbox').each(function (i) {
+                            // Find the index of the checkbox's parent <td>
+                            var colIndex = $(this).closest('td').index();
+                            // Get the header text from the table header row
+                            var headerText = $row.closest('table').find('tr').first().find('th').eq(colIndex).text().trim();
+                            headers.push(headerText);
+                        });
+
+                        ///foreach row.find('.doc-affect-checkbox') get the table header, store it in array
+                        $row.css('background-color', 'yellow');
+                        // Count checkboxes in the row
+                        var checkboxCount = $row.find('.doc-affect-checkbox').length;
+                        // Set required for Listdoc1..N and Listdocaffected1..N
+                        for (let i = 1; i <= checkboxCount; i++) {
+                            $('#Listdoc' + i).prop('required', true);
+                            $('#Listdoc' + i).attr('placeholder', headers[i - 1] + '....');
+                            $('#Listdoc' + i).parent().parent().parent().show();
+                            $('#Listdocaffected' + i).prop('required', true);
+                        }
+                    }
+                }
+
+                // Run on page load and when Doctype changes
+                $(function () {
+                    updateRequiredCheckboxes();
+                    $('#doctype-select').on('change', updateRequiredCheckboxes);
+
+                    // Prevent form submit if any required checkbox in the active row is not checked
+                    $('form').on('submit', function (e) {
+                        var selected = $('#doctype-select').val();
+                        var rowKey = selected === "Form" ? "FRM" : selected;
+                        var $row = $('tr[data-doctype="' + rowKey + '"]');
+                        var allChecked = true;
+                        $row.find('.doc-affect-checkbox[required]').each(function () {
+                            if (!this.checked) {
+                                allChecked = false;
+                            }
+                        });
+                        // Check Listdoc/affected required fields
+                        var checkboxCount = $row.find('.doc-affect-checkbox').length;
+                        for (let i = 1; i <= checkboxCount; i++) {
+                            if (!$('#Listdoc' + i).val() || !$('#Listdocaffected' + i).val()) {
+                                allChecked = false;
+                            }
+                        }
+                        if (!allChecked) {
+                            alert('Please check all required document changes affected checkboxes and fill the required Listdoc fields for the selected document type.');
+                            e.preventDefault();
+                        }
+                    });
+                });
+            </script>
+
+
+            <div class="row">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc1" class="control-label"></label>
+                        <input asp-for="Listdoc1" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc1" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected1" class="control-label"></label>
+                        <select asp-for="Listdocaffected1" class="form-control">
+                            @*<select class="form-control input-validation-error" id="Listdocaffected1" name="Listdocaffected1" aria-invalid="true" required="" aria-describedby="Listdocaffected1-error">*@
+                            <option selected="" disabled="">--Select--</option>
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected1" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" id="cantik2">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc2" class="control-label"></label>
+                        <input asp-for="Listdoc2" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc2" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected2" class="control-label"></label>
+                        <select asp-for="Listdocaffected2" class="form-control">
+                            @*<select class="form-control input-validation-error" id="Listdocaffected1" name="Listdocaffected1" aria-invalid="true" required="" aria-describedby="Listdocaffected1-error">*@
+                            <option selected="" disabled="">--Select--</option>
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected2" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="cantik3">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc3" class="control-label"></label>
+                        <input asp-for="Listdoc3" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc3" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected3" class="control-label"></label>
+                        <select asp-for="Listdocaffected3" class="form-control">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected3" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="cantik4">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc4" class="control-label"></label>
+                        <input asp-for="Listdoc4" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc4" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected4" class="control-label"></label>
+                        <select asp-for="Listdocaffected4" class="form-control">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected4" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="cantik5">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc5" class="control-label"></label>
+                        <input asp-for="Listdoc5" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc5" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected5" class="control-label"></label>
+                        <select asp-for="Listdocaffected5" class="form-control">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected5" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="cantik6">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc6" class="control-label"></label>
+                        <input asp-for="Listdoc6" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc6" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected6" class="control-label"></label>
+                        <select asp-for="Listdocaffected6" class="form-control">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected6" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="cantik7">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc7" class="control-label"></label>
+                        <input asp-for="Listdoc7" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc7" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected7" class="control-label"></label>
+                        <select asp-for="Listdocaffected7" class="form-control">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected7" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="cantik8">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc8" class="control-label"></label>
+                        <input asp-for="Listdoc8" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc8" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected8" class="control-label"></label>
+                        <select asp-for="Listdocaffected8" class="form-control">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected8" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="cantik9">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc9" class="control-label"></label>
+                        <input asp-for="Listdoc9" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc9" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected9" class="control-label"></label>
+                        <select asp-for="Listdocaffected9" class="form-control">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected9" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row" id="cantik10">
+                <div class="col-8">
+                    <div class="form-group">
+                        <label asp-for="Listdoc10" class="control-label"></label>
+                        <input asp-for="Listdoc10" class="form-control" onchange="Novi(this)" />
+                        <span asp-validation-for="Listdoc10" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-4">
+                    <div class="form-group">
+                        <label asp-for="Listdocaffected10" class="control-label"></label>
+                        <select asp-for="Listdocaffected10" class="form-control">
+                            <option value=""></option>
+                            <option value="Y">Yes</option>
+                            <option value="N">No</option>
+                        </select>
+                        <span asp-validation-for="Listdocaffected10" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <input asp-for="Finalapproverdecision" />
+                <input asp-for="Finalapproverdate" />
+            </div>
+
+            <div>
+                <input asp-for="SMEapproverdecision" />
+                <input asp-for="SMEdate" />
+            </div>
+
+            <div>
+                <input asp-for="ITCapproverdecision" />
+                <input asp-for="ITCdate" />
+            </div>
+
+            <div>
+                <input asp-for="QMSASapproverdecision" />
+                <input asp-for="QMSASdate" />
+            </div>
+
+            <div>
+                <input asp-for="QMSNADCAPapproverdecision" />
+                <input asp-for="QMSNADCAPdate" />
+            </div>
+
+
+            <div>
+                <input asp-for="Doccontrolleapproverdecision" />
+                <input asp-for="Doccontrollerdate" />
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Submit" class="btn btn-primary" />
+            </div>
+        </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="List">Back to List</a>
+    </div>
+    <script>
+        function Novi(element) {
+            // Always show the first row
+            $('#Listdoc1').closest('.row').show();
+
+            if (element) {
+                var $row = $(element).closest('.row');
+                var $nextRows = $row.nextAll('.row');
+                var $input = $row.find('input[id^="Listdoc"]');
+                var inputEmpty = $input.val() === '';
+
+                $nextRows.each(function (i) {
+                    var hasRequired = $(this).find('input[required], select[required], textarea[required]').length > 0;
+                    if (inputEmpty) {
+                        // Hide all next rows unless they have required fields
+                        if (hasRequired) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    } else {
+                        // Show only the immediate next row or any row with required fields
+                        if (i === 0 || hasRequired) {
+                            $(this).show();
+                        } else {
+                            $(this).hide();
+                        }
+                    }
+                });
+            }
+        }    
+    </script>
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }

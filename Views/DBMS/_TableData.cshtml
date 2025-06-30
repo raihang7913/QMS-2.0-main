@@ -1,0 +1,30 @@
+﻿@model IEnumerable<object>
+
+@if (Model != null && Model.Any())
+{
+    <table>
+        <thead>
+            <tr>
+                @foreach (var property in Model.First().GetType().GetProperties())
+                {
+                    <th>@property.Name</th>
+                }
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var row in Model)
+            {
+                <tr>
+                    @foreach (var property in row.GetType().GetProperties())
+                    {
+                        <td>@property.GetValue(row)</td>
+                    }
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No data available for the selected table.</p>
+}

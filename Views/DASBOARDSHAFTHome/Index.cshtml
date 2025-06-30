@@ -1,0 +1,395 @@
+﻿@model IEnumerable<QMS.Models.DOCREQ>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Reqtype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Functgroup)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FunctgroupOthers)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Docnumber)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LinkDoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Associateddoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doctype)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Superseededdoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reqinitiatedate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Prioritydoc)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuditNo)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Docowner)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Docownerdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finalapprovername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finalapproverdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finalapproverdecision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Finalapprovernote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SMEname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SMEdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SMEapproverdecision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SMEapprovernote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ITCname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ITCdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ITCapproverdecision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ITCapprovernote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QMSASname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QMSASdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QMSASapproverdecision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QMSASapprovernote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QMSNADCAPname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QMSNADCAPdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QMSNADCAPapproverdecision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.QMSNADCAPapprovernote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doccontrollername)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doccontrollerdate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doccontrolleapproverdecision)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Doccontrolleapprovernote)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TechnicalData)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SmartsolveUpload)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected2)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected3)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected4)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected5)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected6)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected7)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected8)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc9)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected9)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdoc10)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Listdocaffected10)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Closedate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Closestatus)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reqtype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Functgroup)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FunctgroupOthers)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Docnumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LinkDoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Associateddoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doctype)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Superseededdoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Reqinitiatedate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Prioritydoc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuditNo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Docowner)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Docownerdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finalapprovername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finalapproverdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finalapproverdecision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Finalapprovernote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SMEname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SMEdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SMEapproverdecision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SMEapprovernote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ITCname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ITCdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ITCapproverdecision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ITCapprovernote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QMSASname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QMSASdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QMSASapproverdecision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QMSASapprovernote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QMSNADCAPname)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QMSNADCAPdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QMSNADCAPapproverdecision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.QMSNADCAPapprovernote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doccontrollername)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doccontrollerdate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doccontrolleapproverdecision)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Doccontrolleapprovernote)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TechnicalData)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SmartsolveUpload)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected1)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected2)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected3)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected4)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected5)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected6)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected7)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc8)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected8)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc9)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected9)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdoc10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Listdocaffected10)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Closedate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Closestatus)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

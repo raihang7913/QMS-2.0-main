@@ -1,0 +1,146 @@
+﻿@model QMS.Models.CCRREQ
+
+@{
+    ViewData["Title"] = "ccrrequest";
+}
+
+<h3>CCR Request @ViewBag.tes</h3>
+<br />
+<h6 style="color:gray">Please complete this form </h6>
+<hr />
+<div class="row">
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="CCRNo" class="control-label"></label>
+                <input asp-for="CCRNo" class="form-control" />
+                <span asp-validation-for="CCRNo" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="DateReceived" class="control-label"></label>
+                <input asp-for="DateReceived" class="form-control" />
+                <span asp-validation-for="DateReceived" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="RefECR" class="control-label"></label>
+                <input asp-for="RefECR" class="form-control" />
+                <span asp-validation-for="RefECR" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-12">
+        <div class="form-group">
+            <label asp-for="ConfigurationChangeCategory" class="control-label"></label>
+            <select asp-for="ConfigurationChangeCategory" class="form-control">
+                <option value="Drawing">Drawing</option>
+                <option value="StandardorSpecification">Standard or Specification</option>
+            </select>
+            <span asp-validation-for="ConfigurationChangeCategory" class="text-danger"></span>
+        </div>
+    </div>
+
+
+
+    <div class="row">
+        <div class="col-6">
+            <div class="form-group">
+                <label asp-for="ChangeCategoryDraw" class="control-label"></label>
+                <select asp-for="ChangeCategoryDraw" class="form-control">
+                    <option value="CategoryA">Category A</option>
+                    <option value="CategoryB">Category B</option>
+                    <option value="CategoryC">Category C</option>
+                </select>
+                <span asp-validation-for="ChangeCategoryDraw" class="text-danger"></span>
+            </div>
+        </div>
+        * Category A : All parts affected, Unite recall affected. <br />
+        * Category B : Traceable point of introduction - Work in progress affected.<br />
+        * Category C : Amendment, Documentation affected only.
+    </div>
+
+    <div class="row">
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="Drawing" class="control-label"></label>
+                <input asp-for="Drawing" class="form-control" />
+                <span asp-validation-for="Drawing" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="PartNoDraw" class="control-label"></label>
+                <input asp-for="PartNoDraw" class="form-control" />
+                <span asp-validation-for="PartNoDraw" class="text-danger"></span>
+            </div>
+        </div>
+
+        <div class="col-4">
+            <div class="form-group">
+                <label asp-for="PartNameDraw" class="control-label"></label>
+                <input asp-for="PartNameDraw" class="form-control" />
+                <span asp-validation-for="PartNameDraw" class="text-danger"></span>
+            </div>
+        </div>
+    </div>
+
+
+     <div class="row">
+         <div class="col-4">
+              <div class="form-group">
+                  <label asp-for="ListNoDraw" class="control-label"></label>
+                  <input asp-for="ListNoDraw" class="form-control" />
+                  <span asp-validation-for="ListNoDraw" class="text-danger"></span>
+              </div>
+         </div>
+
+         <div class="col-4">
+              <div class="form-group">
+                  <label asp-for="OldIssueDraw" class="control-label"></label>
+                  <input asp-for="OldIssueDraw" class="form-control" />
+                  <span asp-validation-for="OldIssueDraw" class="text-danger"></span>
+              </div>
+         </div>
+
+         <div class="col-4">
+              <div class="form-group">
+                   <label asp-for="NewIssueDraw" class="control-label"></label>
+                   <input asp-for="NewIssueDraw" class="form-control" />
+                   <span asp-validation-for="NewIssueDraw" class="text-danger"></span>
+              </div>
+         </div>
+      </div>
+
+      <div class="row">
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="CustomerNameDraw" class="control-label"></label>
+                    <input asp-for="CustomerNameDraw" class="form-control" />
+                    <span asp-validation-for="CustomerNameDraw" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                    <label asp-for="DateReviewDraw" class="control-label"></label>
+                    <input asp-for="DateReviewDraw" class="form-control" />
+                    <span asp-validation-for="DateReviewDraw" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="col-4">
+                <div class="form-group">
+                    <label for="GapAnalysisDraw" class="control-label"> Gap Analysis File Upload </label>
+                    <input id="GapAnalysisDraw" type="file" name="GapAnalysisDraw" class="form-control" multiple="multiple" />
+                    <a href=""</a>
+                </div>
+            </div>
+
+      </div>
+</div>

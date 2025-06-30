@@ -1,0 +1,7 @@
+﻿@model QMS.Models.DOCREQ
+<form asp-controller="HOME"
+      asp-action="UPDATE"
+      asp-route-id="@Model.Id">
+    @Html.EditorForModel()
+    <input type=“submit” value="save" />
+</form>

@@ -1,0 +1,428 @@
+﻿@{
+    ViewData["Title"] = "Database Management System";
+}
+
+<link rel="stylesheet" href="~/lib/SweetAlert/sweetalert2.min.css" />
+
+<div class="content-header">
+    <div class="container-fluid">
+        <div class="row mb-2">
+            <div class="col-sm-6">
+                <h1 class="m-0">Database Management System</h1>
+            </div>
+            <div class="col-sm-6">
+                <ol class="breadcrumb float-sm-right">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item active">DBMS</li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="content">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Database Tables</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body">
+                <div class="form-group">
+                    <label for="tableSelector">Select a Table:</label>
+                    <select id="tableSelector" class="form-control">
+                        <option value="">-- Select a Table --</option>
+                        @foreach (var item in ViewBag.TableNames as List<SelectListItem>)
+                        {
+                            <option value="@item.Value">@item.Text</option>
+                        }
+                    </select>
+                </div>
+                <button id="viewTableButton" type="button" class="btn btn-primary" onclick="viewTable()">View Table</button>
+            </div>
+        </div>
+
+        <div class="card mt-3">
+            <div class="card-header">
+                <h3 class="card-title">Table Data</h3>
+                <div class="card-tools">
+                    <button type="button" class="btn btn-tool" data-card-widget="collapse">
+                        <i class="fas fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="card-body overflow-auto">
+                <button id="addNewDataButton" class="btn btn-success mb-3" onclick="showCreateModal()">Add New Data</button>
+                <table id="dbms_table" class="table table-bordered table-striped">
+                    <thead>
+                        <tr id="tableHeaders">
+                            <!-- Headers will be dynamically added here -->
+                        </tr>
+                    </thead>
+                    <tbody id="tableBody">
+                        <!-- Table rows will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal fade" id="createModal" tabindex="-1" aria-labelledby="createModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="createModalLabel">Create New Row</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="createForm">
+                    <!-- Fields will be dynamically added here -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" onclick="createRow()">Save</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/lib/SweetAlert/sweetalert2.all.min.js"></script>
+<script>
+    // var role = sessionStorage.getItem("role")
+    // var dataAccount = sessionStorage.getItem("Account")
+
+    // console.log(role);
+
+    // if (role == null || role != "Training School") {
+    //     window.location.href = '/Auth/Login'
+    // }
+
+    let currentPage = 1;
+    const pageSize = 10000;
+
+    function viewTable(page = 1) {
+        const selectedTable = $('#tableSelector').val();
+        if (selectedTable) {
+            $.getJSON(`/DBMS/TableData?tableName=${selectedTable}&page=${page}&pageSize=${pageSize}`)
+                .done(function (data) {
+                    if (data.success) {
+                        currentPage = data.currentPage;
+
+                        // Update table content
+                        const $tableHeaders = $('#tableHeaders');
+                        const $tableBody = $('#tableBody');
+                        $tableHeaders.empty();
+                        $tableBody.empty();
+
+                        if (data.data.length > 0) {
+                            const headers = Object.keys(data.data[0]);
+                            headers.forEach(header => {
+                                $('<th>', { class: 'text-center', text: header }).appendTo($tableHeaders);
+                            });
+
+                            $('<th>', { class: 'text-center', text: 'Button Action' }).appendTo($tableHeaders);
+
+                            data.data.forEach((row, index) => {
+                                const $tr = $('<tr>');
+                                headers.forEach(header => {
+                                    $('<td>', { text: row[header] }).appendTo($tr);
+                                });
+
+                                $('<td>', {
+                                    class: 'text-center',
+                                    html: `
+                                        <div class="btn-group">
+                                            <button type="button" class="btn btn-info btn-sm" onclick="readRow(${index})">
+                                                <i class="fas fa-eye"></i> Read
+                                            </button>
+                                            <button type="button" class="btn btn-warning btn-sm" onclick="editRow(${index})">
+                                                <i class="fas fa-edit"></i> Edit
+                                            </button>
+                                            <button type="button" class="btn btn-danger btn-sm" onclick="deleteRow(${index})">
+                                                <i class="fas fa-trash"></i> Delete
+                                            </button>
+                                        </div>
+                                    `
+                                }).appendTo($tr);
+
+                                $tr.appendTo($tableBody);
+                            });
+                        } else {
+                            $('<tr>').append(
+                                $('<td>', {
+                                    colspan: headers.length + 1,
+                                    class: 'text-center',
+                                    text: 'No data available for the selected table.'
+                                })
+                            ).appendTo($tableBody);
+                        }
+
+                        // Update pagination controls
+                        $('#pageInfo').text(`Page ${data.currentPage}`);
+                        $('#prevPageButton').prop('disabled', data.currentPage === 1);
+                        $('#nextPageButton').prop('disabled', !data.hasNextPage);
+                    } else {
+                        alert(data.message);
+                    }
+                })
+                .fail(function (error) {
+                    console.error('Error fetching table data:', error);
+                });
+        } else {
+            alert('Please select a table.');
+        }
+    }
+
+    function changePage(direction) {
+        viewTable(currentPage + direction);
+    }
+
+    function editRow(index) {
+        const selectedTable = $('#tableSelector').val();
+        if (!selectedTable) {
+            Swal.fire('Error', 'Please select a table.', 'error');
+            return;
+        }
+
+        const $row = $(`#tableBody tr:nth-child(${index + 1})`);
+        const $cells = $row.find('td');
+        const headers = $('#tableHeaders th').map(function () {
+            return $(this).text();
+        }).get();
+
+        const rowData = {};
+        headers.forEach((header, i) => {
+            if (header !== "Button Action") {
+                rowData[header] = $cells.eq(i).text();
+            }
+        });
+
+        // Dynamically create input fields for each property in the JSON
+        const inputFields = Object.keys(rowData).map(key => {
+            return `
+                <div class="form-group">
+                    <label for="${key}">${key}</label>
+                    <input type="text" id="DBMS_${key}" class="form-control" value="${rowData[key]}">
+                </div>
+            `;
+        }).join('');
+
+        Swal.fire({
+            title: 'Edit Row Data',
+            html: `
+                <form id="editForm">
+                    ${inputFields}
+                </form>
+            `,
+            showCancelButton: true,
+            confirmButtonText: 'Update',
+            preConfirm: () => {
+                const updatedRow = {};
+                Object.keys(rowData).forEach(key => {
+                    updatedRow[key] = $(`#DBMS_${key}`).val();
+                });
+                return updatedRow;
+            }
+        }).then((result) => {
+            if (result.isConfirmed) {
+                const updatedData = result.value;
+
+                $.ajax({
+                    url: `/DBMS/Update`,
+                method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                    TableName: selectedTable,
+                        UpdatedRow: updatedData
+                })
+            })
+                .done(function (data) {
+                if (data.success) {
+                        Swal.fire('Success', data.message, 'success');
+                    viewTable(); // Refresh table
+                } else {
+                        Swal.fire('Error', data.message, 'error');
+                }
+            })
+                .fail(function (error) {
+                    console.error('Error updating row:', error);
+                    Swal.fire('Error', 'Failed to update row.', 'error');
+                });
+        }
+        });
+    }
+
+
+    function deleteRow(index) {
+        const selectedTable = $('#tableSelector').val();
+        if (!selectedTable) {
+            alert('Please select a table.');
+            return;
+        }
+
+        const $row = $(`#tableBody tr:nth-child(${index + 1})`);
+        const $cells = $row.find('td');
+        const headers = $('#tableHeaders th').map(function () {
+            return $(this).text();
+        }).get();
+
+        const rowData = {};
+        headers.forEach((header, i) => {
+            if (header !== "Button Action") {
+                rowData[header] = $cells.eq(i).text();
+            }
+        });
+
+        if (confirm("Are you sure you want to delete this row?")) {
+            $.ajax({
+                url: `/DBMS/Delete`,
+                method: 'POST',
+                contentType: 'application/json',
+                data: JSON.stringify({
+                    TableName: selectedTable,
+                    RowToDelete: rowData
+                })
+            })
+            .done(function (data) {
+                if (data.success) {
+                    alert(data.message);
+                    viewTable(); // Refresh table
+                } else {
+                    alert(data.message);
+                }
+            })
+            .fail(function (error) {
+                console.error('Error deleting row:', error);
+            });
+        }
+    }
+
+    function readRow(index) {
+        const selectedTable = $('#tableSelector').val();
+        if (!selectedTable) {
+            Swal.fire('Error', 'Please select a table.', 'error');
+            return;
+        }
+
+        const $row = $(`#tableBody tr:nth-child(${index + 1})`);
+        const $cells = $row.find('td');
+        const headers = $('#tableHeaders th').map(function () {
+            return $(this).text();
+        }).get();
+
+        const rowData = {};
+        headers.forEach((header, i) => {
+            if (header !== "Button Action") {
+                rowData[header] = $cells.eq(i).text();
+    }
+        });
+
+        // Dynamically create read-only fields for each property in the JSON
+        const readOnlyFields = Object.keys(rowData).map(key => {
+            return `
+                <div class="form-group">
+                    <label for="${key}">${key}</label>
+                    <input type="text" id="${key}" class="form-control" value="${rowData[key]}" readonly>
+                </div>
+            `;
+        }).join('');
+
+        Swal.fire({
+            title: 'View Row Data',
+            html: `
+                <form id="readForm">
+                    ${readOnlyFields}
+                </form>
+            `,
+            showCancelButton: false,
+            confirmButtonText: 'Close'
+        });
+    }
+
+
+    function createRow() {
+    }
+
+        function showCreateModal() {
+        const selectedTable = $('#tableSelector').val();
+        if (!selectedTable) {
+            Swal.fire('Error', 'Please select a table.', 'error');
+            return;
+        }
+
+        // Fetch table structure (columns) dynamically
+        $.getJSON(`/DBMS/TableData?tableName=${selectedTable}&page=1&pageSize=1`)
+            .done(function (data) {
+                if (data.success && data.data.length > 0) {
+                    const headers = Object.keys(data.data[0]);
+
+                    // Dynamically create input fields for each column
+                    const inputFields = headers.map(header => {
+                        return `
+                            <div class="form-group">
+                                <label for="${header}">${header}</label>
+                                <input type="text" id="DBMS_${header}" class="form-control">
+                            </div>
+                        `;
+                    }).join('');
+
+                    Swal.fire({
+                        title: 'Add New Data',
+                        html: `
+                            <form id="createForm">
+                                ${inputFields}
+                            </form>
+                        `,
+                        showCancelButton: true,
+                        confirmButtonText: 'Create',
+                        preConfirm: () => {
+                            const newRow = {};
+                            headers.forEach(header => {
+                                newRow[header] = $(`#DBMS_${header}`).val();
+                            });
+                            return newRow;
+                        }
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            const newData = result.value;
+
+                            $.ajax({
+                                url: `/DBMS/Create`,
+                                method: 'POST',
+                                contentType: 'application/json',
+                                data: JSON.stringify({
+                                    TableName: selectedTable,
+                                    NewRow: newData
+                                })
+                            })
+                            .done(function (data) {
+                                if (data.success) {
+                                    Swal.fire('Success', data.message, 'success');
+                                    viewTable(); // Refresh table
+                                } else {
+                                    Swal.fire('Error', data.message, 'error');
+                                }
+                            })
+                            .fail(function (error) {
+                                console.error('Error creating row:', error);
+                                Swal.fire('Error', 'Failed to create row.', 'error');
+                            });
+                        }
+                    });
+                } else {
+                    Swal.fire('Error', 'Failed to fetch table structure.', 'error');
+                }
+            })
+            .fail(function (error) {
+                console.error('Error fetching table structure:', error);
+            });
+    }
+
+</script>

@@ -1,0 +1,1000 @@
+﻿
+@{
+    ViewData["Title"] = "CCRNew";
+}
+
+
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h6>Register Work Project</h6>
+            <input id="CCRID" type="hidden" value="">
+        </div>
+        <div class="card-body">
+            <div class="row">
+
+
+                <div class="col-md-12 mt-4">
+                    <div class="card">
+
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <tr>
+                                    <th>CCR No:</th>
+                                    <th>Date Received:</th>
+                                    <th>Ref ECR/DR No:</th>
+                                </tr>
+
+                            </table>
+                        </div>
+                        <div class="card-body">
+                            <div class="card-header">
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="card-title text-center font-weight-bold"><p style="background-color:#f1fa43;color:black">Part 1 Configuration Change Record Function</p></h6>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                    <div class="col-md-8" id="chooseA">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Part1CCR" onclick="PartA(this, 'Part1CCR', 'chooseA')" value="PartA" id="PartADrawing">
+                                            <label class="form-check-label font-weight-bold" for="defaultCheck1">
+                                                A. Drawing
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Drawing</label>
+                                            <div class="col-sm-9">
+                                                @*@foreach (var Drawing in ViewBag.Drawing)
+                                                {
+                                                <input class="form-control" name="Drawing" value="@Drawing.DrawingNo" id="CCRP1Drawing">
+                                                }*@
+
+                                            </div>
+                                        </div>
+
+                                        @*@foreach (var PartNumber in ViewBag.PartNumber)
+                                        {
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Part No</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" value="@PartNumber.PartNumber" name="PartNumber" id="CCRP1DrawingPartNo">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Part Name</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" value="@PartNumber.PartName" id="CCRP1DrawingPartName">
+                                            </div>
+                                        </div>
+                                        }*@
+
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">List No</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" name="listNo" id="CCRP1DrawingListNo">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Old Issue</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" id="CCRP1DrawingOldIssue">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Customer Name</label>
+                                            @*@foreach (var PartNumber in ViewBag.PartNumber)
+                                            {
+                                            <div class="col-sm-9">
+                                                <input class="form-control" value="@PartNumber.Customer_ID" name="CustomerID" id="CCRP1DrawingCustomer">
+                                            </div>
+                                            }*@
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">GAP Analysis</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" id="GapAnalysisCCR" value="see part 2">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Date Review</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" name="DateReview" id="CCRP1DrawingDateReview">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="col-md-8 hide" id="selectedA">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Part1CCR" onclick="PartA(this, 'Part1CCR', 'selectedA')" value="PartA" id="defaultCheck1">
+                                            <label class="form-check-label font-weight-bold" for="defaultCheck1">
+                                                A. Drawing (disabled)
+                                            </label>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Drawing</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled name="Drawing" id="CCRP1Drawing">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Part No</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled name="PartNumber" id="PartNoCCR">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Part Name</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled id="PartNameCCR">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">List No</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled name="listNo" id="ListNoCCR">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Old Issue</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled id="OldIssueCCR">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Customer Name</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled name="CustomerID" id="CustomerNameCCR">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">GAP Analysis</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled id="GapAnalysisCCR" value="see part 2">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label  ml-4">Date Review</label>
+                                            <div class="col-sm-9">
+                                                <input type="date" class="form-control" disabled name="DateReview" id="DateReviewDrawingCCR">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-4">
+                                        <h6 class="card-title font-weight-bold">Change Category <small>(see Below)</small></h6>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="ChangeCategory" onclick="onlyOne(this, 'ChangeCategory')" value="A" id="CCRP1DrawingChangeCategoryA">
+                                            <label class="form-check-label font-weight-bold" for="defaultCheck1">
+                                                Category A: <p>All parts affected - change involves bringing all units/Hardware into line with the change and generally invokes a product recall from the end customer. site(including subasse,blies, kitted parts, stores and work in progress including externally manufactured/procured items (and all delivered))<
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="ChangeCategory" onclick="onlyOne(this, 'ChangeCategory')" value="B" id="CCRP1DrawingChangeCategoryB">
+                                            <label class="form-check-label font-weight-bold" for="defaultCheck1">
+                                                Category B: <p>Traceable point of introduction -  Work in progress affected. Actions to cover units and part on-site (Including subassemblies, kitted parts, stores and parts on-site progress, including externally manufactured/procured items)</p>
+                                            </label>
+                                        </div>
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="ChangeCategory" onclick="onlyOne(this, 'ChangeCategory')" value="C" id="CCRP1DrawingChangeCategoryC">
+                                            <label class="form-check-label font-weight-bold" for="defaultCheck1">
+                                                Category C: <p class="font-weight-bold">Amendment - has no adverse effect on equipment. Documentation affected only - Amend drawings and/or layouts. No effect on the work in progress. Consequential action required to revise toolingm etc.</p>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12" id="chooseB">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Part1CCR" onclick="PartA(this, 'Part1CCR', 'chooseB')" value="" id="PartASpecification">
+                                            <label class="form-check-label font-weight-bold" for="defaultCheck1">
+                                                B. Standard or Specification
+                                            </label>
+                                            <p class="font-weight-bold ml-4">
+                                                Below Standar or specification referenced in our QMS and Procedure relating to your department/area has been revised and released.
+                                                ALong with this Configuration Change Record, plesea respond as to your status of the review below
+                                            </p>
+                                        </div>
+                                        <div class="form-check ml-4">
+                                            <input class="form-check-input" type="checkbox" value="" name="Part1CCRSpecification" onclick="onlyOne(this, 'Part1CCRSpecification')" id="selectedBA">
+                                            <label class="form-check-label " for="defaultCheck1">
+                                                1. International Codes / Regulations / Standards / Specifications / Recommended Practices / Nadcap Audit Critia
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check ml-4">
+                                            <input class="form-check-input" type="checkbox" name="Part1CCRSpecification" onclick="onlyOne(this, 'Part1CCRSpecification')" value="" id="selectedBB">
+                                            <label class="form-check-label " for="defaultCheck1">
+                                                2. Collins Aerospace Policies / Procedures / Work Instructions / Guidance / Form
+                                            </label>
+                                        </div>
+                                        <div class="form-check ml-4">
+                                            <input class="form-check-input" type="checkbox" name="Part1CCRSpecification" onclick="onlyOne(this, 'Part1CCRSpecification')" value="" id="selectedBC">
+                                            <label class="form-check-label " for="defaultCheck1">
+                                                3. Customer
+                                            </label>
+                                        </div>
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">Customer Name</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" id="CCRP1SpecificationCustomerName">
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">Number</label>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" id="CCRP1SpecificationNumber">
+                                            </div>
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4">Date Review</label>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" id="CCRP1SpecificationDateReview">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">Old Issue</label>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" id="CCRP1SpecificationOldIssue">
+                                            </div>
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4">Gap Analysis</label>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" value="see part 2" id="inputEmail3">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">New Issue</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" id="CCRP1SpecificationNewIssue">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">Title</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" id="CCRP1SpecificationTitle">
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-md-12 hide" id="selectedB">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" name="Part1CCR" onclick="PartA(this, 'Part1CCR', 'selectedB')" value="" id="defaultCheck1">
+                                            <label class="form-check-label font-weight-bold" for="defaultCheck1">
+                                                B. Standard or Specification(disabled)
+                                            </label>
+                                            <p class="font-weight-bold ml-4">
+                                                Below Standar or specification referenced in our QMS and Procedure relating to your department/area has been revised and released.
+                                                ALong with this Configuration Change Record, plesea respond as to your status of the review below
+                                            </p>
+                                        </div>
+                                        <div class="form-check ml-4">
+                                            <input class="form-check-input" type="checkbox" value="" name="Part1CCRSpecification" disabled onclick="onlyOne(this, 'Part1CCRSpecification')">
+                                            <label class="form-check-label " for="defaultCheck1">
+                                                1. International Codes / Regulations / Standards / Specifications / Recommended Practices / Nadcap Audit Critia
+                                            </label>
+                                        </div>
+
+                                        <div class="form-check ml-4">
+                                            <input class="form-check-input" type="checkbox" name="Part1CCRSpecification" disabled onclick="onlyOne(this, 'Part1CCRSpecification')" value="">
+                                            <label class="form-check-label " for="defaultCheck1">
+                                                2. Collins Aerospace Policies / Procedures / Work Instructions / Guidance / Form
+                                            </label>
+                                        </div>
+                                        <div class="form-check ml-4">
+                                            <input class="form-check-input" type="checkbox" name="Part1CCRSpecification" disabled onclick="onlyOne(this, 'Part1CCRSpecification')" value="">
+                                            <label class="form-check-label " for="defaultCheck1">
+                                                3. Customer
+                                            </label>
+                                        </div>
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">Customer Name</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled id="inputEmail3">
+                                            </div>
+
+                                        </div>
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">Number</label>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" disabled id="inputEmail3">
+                                            </div>
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4">Date Review</label>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" disabled id="inputEmail3">
+                                            </div>
+                                        </div>
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">Old Issue</label>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" disabled id="inputEmail3">
+                                            </div>
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4">Gap Analysis</label>
+                                            <div class="col-sm-3">
+                                                <input class="form-control" disabled value="see part 2" id="inputEmail3">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">New Issue</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled id="inputEmail3">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group row ml-5">
+                                            <label for="inputEmail3" class="col-sm-2 col-form-label4 ml-4">Title</label>
+                                            <div class="col-sm-9">
+                                                <input class="form-control" disabled id="inputEmail3">
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <h6 class="card-title text-center font-weight-bold"><p style="background-color:#f1fa43;color:black">Part 2 GAP Analysis</p></h6>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                </div>
+
+                                <p class="font-weight-bold">
+                                    Applicable for Drawing, Collins Aerospace standard, Customer standard or specification and Nadcap Audit criteria.
+                                    Detail record of any identified gaps and closure plan(s) refer to below table.
+                                    Alternatively, process owner could use COL-FRM-0030 or similar
+                                </p>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Document/Section</th>
+                                            <th>Indentified Gap</th>
+                                            <th>Closure/Action Plan</th>
+                                            <th>Person(s) Responsible</th>
+                                            <th>Due Date</th>
+                                            <th>% Complete</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+
+                                            <td>
+                                                <select class="form-control">
+                                                    <option disabled selected>--select pic--</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="date" class="form-control"></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+
+                                            <td>
+                                                <select class="form-control">
+                                                    <option disabled selected>--select pic--</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="date" class="form-control"></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+
+                                            <td>
+                                                <select class="form-control">
+                                                    <option disabled selected>--select pic--</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="date" class="form-control"></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+
+                                            <td>
+                                                <select class="form-control">
+                                                    <option disabled selected>--select pic--</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="date" class="form-control"></td>
+                                            <td></td>
+                                        </tr>
+
+                                        <tr>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+
+                                            <td>
+                                                <select class="form-control">
+                                                    <option disabled selected>--select pic--</option>
+                                                </select>
+                                            </td>
+                                            <td><input type="date" class="form-control"></td>
+                                            <td></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <hr>
+
+                                <div class="row">
+                                    <div class="col-md-5">
+
+                                    </div>
+
+                                    <div class="col-md-2">
+                                        <h6 class="card-title text-center font-weight-bold"><p style="background-color:#f1fa43;color:black">Part 3 Review Results(s)</p></h6>
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <p>A. Drawing or Standard or Specification Keep As Company reference:</p>
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
+                                            <label class="form-check-label" for="inlineRadio1">YES</label>
+                                        </div>
+                                        <div class="form-check form-check-inline">
+                                            <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
+                                            <label class="form-check-label" for="inlineRadio2">NO</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3">
+
+                                    </div>
+                                    <div class="col-md-12">
+                                        <p>B. Drawing or Standard or Specification Impact</p>
+                                        <div class="form-check ml-4">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                <b>1)Not Impact</b> to Product or Process and <b>No action required</b>
+                                            </label>
+                                        </div>
+                                        <div class="form-check ml-4">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck2" disabled>
+                                            <label class="form-check-label" for="defaultCheck2">
+                                                <b>2) Impact</b> to Product Process, but <b>No action required.</b> Currently site procedure/process complies with the released drawing or standard or specification in it's entirely and no change is required. Reference site current procedure and revision:
+
+                                            </label>
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>Document No / Title</th>
+                                                    <th>Revision</th>
+                                                </tr>
+                                                <tbody>
+                                                    <tr>
+                                                        <td><input class="form-control"></td>
+                                                        <td><input class="form-control"></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td><input class="form-control"></td>
+                                                        <td><input class="form-control"></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                        <div class="form-check ml-4">
+                                            <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                            <label class="form-check-label" for="defaultCheck1">
+                                                <b>3) Impact</b> to Product or process and <b>further action required.</b> Current site document or process need to be updated to comply with the released drawing or standard or specification. Change impact as below
+
+                                            </label>
+                                            <table class="table table-sm table-bordered">
+                                                <tr>
+                                                    <th colspan="6" class="text-center">Impact</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Policy</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Process Plan</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>FAI</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Procedure</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Technique sheet</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>SAP</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Work Standard/Work Introduction</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>CNC Program</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Amend PO. PO No:</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Form</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Fixture, Tool Gauge</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Database</th>
+                                                </tr>
+                                                <tr>
+
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th colspan="5">Others:</th>
+                                                </tr>
+                                            </table>
+
+                                            <table class="table table-sm table-bordered mt-3">
+                                                <tr>
+                                                    <th colspan="8" class="text-center">Related Area affected</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Machining</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>SIOP - Production Scheduling</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>NPI</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Quality Clinic</th>
+                                                </tr>
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Assembly</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>SIOP - Demand Management</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Eng - PE</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Calibration</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>NDT</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>SIOP - Logistic</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Eng - ME</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>CMM</th>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Surface Treatment</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>MM - Procurement</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Eng - iTeam</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>EHS</th>
+                                                </tr>
+
+
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>NCM(ECM)</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>MM - Vendor Management</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>ACE</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Facility/Utility</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Heat Treatment</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>MM - Exim</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>ITC</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Finance</th>
+                                                </tr>
+
+                                                <tr>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Maintanance</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Human Resources / Traning</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Subcontractor</th>
+                                                    <th>
+                                                        <div class="form-check text-center">
+                                                            <input class="form-check-input position-static" type="checkbox" id="blankCheckbox" value="option1" aria-label="...">
+                                                        </div>
+                                                    </th>
+                                                    <th>Others: </th>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-11">
+                                        <p>C. This drawing or standard or specification reviewed by:</p>
+                                        <table class="table table-bordered ml-5">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Employee ID</th>
+                                                    <th>Department</th>
+                                                    <th>Position</th>
+                                                    <th>E-Sign</th>
+
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td><input class="form-control"></td>
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option disabled selected>--select Employye ID--</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input class="form-control"></td>
+                                                    <td><input class="form-control"></td>
+                                                    <td><button class="btn btn-secondary">E-Sign</button></td>
+
+                                                </tr>
+                                                <tr>
+                                                    <td><input class="form-control"></td>
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option disabled selected>--select Employye ID--</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input class="form-control"></td>
+                                                    <td><input class="form-control"></td>
+                                                    <td><button class="btn btn-secondary">E-Sign</button></td>
+                                                </tr>
+                                                <tr>
+                                                    <td><input class="form-control"></td>
+                                                    <td>
+                                                        <select class="form-control">
+                                                            <option disabled selected>--select Employye ID--</option>
+                                                        </select>
+                                                    </td>
+                                                    <td><input class="form-control"></td>
+                                                    <td><input class="form-control"></td>
+                                                    <td><button class="btn btn-secondary">E-Sign</button></td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <h6 class="card-title text-center font-weight-bold"><p style="background-color:#f1fa43;color:black">Part 4 Verification of Impact Summary</p> <small class="text-center mt-4">(if Part 3 Impact and further action required)</small></h6>
+
+                                    </div>
+                                    <div class="col-md-4">
+
+                                    </div>
+                                </div>
+                                <div class="form-check ml-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        <b>Generate or revised of Document (if any) as below</b>
+                                    </label>
+                                </div>
+                                <div class="form-check ml-4">
+                                    <input class="form-check-input" type="checkbox" value="" id="defaultCheck1">
+                                    <label class="form-check-label" for="defaultCheck1">
+                                        <b>Purchase or Change for item (if any) as below</b>
+                                    </label>
+                                </div>
+                                <table class="table table-bordered">
+                                    <thead>
+                                        <tr>
+                                            <th>Document No / Item Description</th>
+                                            <th>New Rev. of Doc, OR New / Change of item</th>
+                                            <th>PIC</th>
+                                            <th>E-Sign</th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option disabled selected>--select Employye ID--</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-secondary">E-Sign</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option disabled selected>--select Employye ID--</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-secondary">E-Sign</button></td>
+                                        </tr>
+                                        <tr>
+                                            <td><input class="form-control"></td>
+                                            <td><input class="form-control"></td>
+                                            <td>
+                                                <select class="form-control">
+                                                    <option disabled selected>--select Employye ID--</option>
+                                                </select>
+                                            </td>
+                                            <td><button class="btn btn-secondary">E-Sign</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                                <div class="row">
+                                    <div class="col-md-5">
+
+                                    </div>
+                                    <div class="col-md-2">
+                                        <div class="btn-group btn-group-md">
+                                            <button class="btn btn-danger" onclick="submitFormCCR()">Update</button>
+                                            <button class="btn btn-success  ml-2">Publish</button>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <script>
+        function onlyOne(checkbox, AttributeName) {
+            var checkboxes = document.getElementsByName(AttributeName)
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) item.checked = false
+            })
+        }
+        function PartA(checkbox, AttributeName, choose) {
+            var checkboxes = document.getElementsByName(AttributeName)
+            checkboxes.forEach((item) => {
+                if (item !== checkbox) item.checked = false
+            });
+
+            if (choose == "chooseA") {
+                $('#selectedB').removeClass('hide');
+                $('#chooseB').addClass('hide');
+            } else if (choose == "chooseB") {
+                $('#selectedA').removeClass('hide');
+                $('#chooseA').addClass('hide');
+            } else if (choose == "selectedB") {
+                $('#selectedB').addClass('hide');
+                $('#chooseB').removeClass('hide');
+            }
+            else if (choose == "selectedA") {
+                $('#selectedA').addClass('hide');
+                $('#chooseA').removeClass('hide');
+            }
+
+        }
+    </script>
+
+
+
+
+    }
+    }

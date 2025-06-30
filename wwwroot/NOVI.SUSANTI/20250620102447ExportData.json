@@ -1,0 +1,1143 @@
+{
+	"items": [
+		{
+			"name": "userActions",
+			"data": []
+		},
+		{
+			"name": "UserProfileInfo",
+			"data": {
+				"@odata.context": "https://substrate.office365.us/profileb2/v2.0/users/176aedf2-c082-40aa-a48e-c6279722089b@7a18110d-ef9b-4274-acef-e62ab0fe28ed/$metadata#profile(accounts(),addresses(),anniversaries(),directoryExtensionAttributes(),educationalActivities(),names(),emails(),notes(),interests(),languages(),phones(),positions(),projects(),responsibilities(),skills(),topics(),webAccounts(),websites(),awards(),publications(),patents(),certifications(),extensions(),photos(),profileVideoMetadata(),summary())",
+				"profileId": "profileId",
+				"lastModifiedDateTime": "2025-06-16T11:03:34.017489Z",
+				"activities": [],
+				"accounts": [
+					{
+						"ageGroup": "",
+						"countryCode": "",
+						"userPrincipalName": "E40098919@adxuser.com",
+						"externalDirectoryObjectId": "176aedf2-c082-40aa-a48e-c6279722089b",
+						"alias": "E40098919_Collins",
+						"exchangeAccountType": "UserMailbox",
+						"exchangeAccountTypeDetails": "UserMailbox",
+						"cid": null,
+						"puid": 1153811115833783600,
+						"userType": "Member",
+						"accountEnabled": true,
+						"isSipEnabled": null,
+						"profileMemberType": null,
+						"userPersona": "InternalMember",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704191Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704199Z",
+						"id": "876c3eae-44e9-4c44-babb-1fd628476a12",
+						"isSearchable": false,
+						"preferredLanguageTag": {
+							"locale": null,
+							"displayName": null
+						},
+						"originTenantInfo": null,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"ageGroup": "",
+						"countryCode": "",
+						"userPrincipalName": "",
+						"externalDirectoryObjectId": "",
+						"alias": "",
+						"exchangeAccountType": "UserMailbox",
+						"exchangeAccountTypeDetails": "UserMailbox",
+						"cid": null,
+						"puid": null,
+						"userType": null,
+						"accountEnabled": null,
+						"isSipEnabled": null,
+						"profileMemberType": null,
+						"userPersona": null,
+						"allowedAudiences": "federatedOrganizations",
+						"createdDateTime": "2025-02-20T14:26:49.5704194Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704195Z",
+						"id": "998b7c59-6f7a-4eec-891d-9f314150c812",
+						"isSearchable": false,
+						"preferredLanguageTag": {
+							"locale": null,
+							"displayName": null
+						},
+						"originTenantInfo": null,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					}
+				],
+				"addresses": [],
+				"anniversaries": [],
+				"directoryExtensionAttributes": [
+					{
+						"displayName": "CustomAttribute1",
+						"value": "CN=E40098919,OU=Staged,OU=Employees,OU=.Users,DC=user,DC=adxrt,DC=com",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704285Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704286Z",
+						"id": "fd9e83af-a96c-4c85-96a9-19d858cb532d",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute2",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704288Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704288Z",
+						"id": "c671601b-f085-4f39-a258-e2473df050c1",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute3",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704289Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704289Z",
+						"id": "31e01678-3bcb-440d-b30f-cdc762085a61",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute4",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.570429Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.570429Z",
+						"id": "6e53df92-da0b-495f-87a3-58b7b120c0dc",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute5",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704291Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704292Z",
+						"id": "0e5f8e4e-4a91-4379-a672-fd06eed7e5e1",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute6",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704293Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704293Z",
+						"id": "2570d630-0c3b-4da6-92f4-bf2dd3dfd504",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute7",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704294Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704294Z",
+						"id": "f27629e4-7496-40c5-98b1-1bebcd35b4d9",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute8",
+						"value": "Collins",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-21T09:17:24.6894069Z",
+						"lastModifiedDateTime": "2025-02-21T09:17:24.6894069Z",
+						"id": "fe960be3-b468-42f7-8052-21902a9a3c3b",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute9",
+						"value": "HRNL",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-21T09:17:24.689407Z",
+						"lastModifiedDateTime": "2025-02-21T09:17:24.689407Z",
+						"id": "b9dc8c78-16d9-4656-a830-ca19d855a448",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute10",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704298Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704298Z",
+						"id": "b7f356a9-d5e9-49fd-9c29-c6c295033418",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute11",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704299Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.57043Z",
+						"id": "fdeae37f-c151-47dc-aaa6-081fd5681f52",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute12",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704301Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704301Z",
+						"id": "e68a0cfa-5c00-4d24-9548-356d56e692b7",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute13",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704302Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704302Z",
+						"id": "aeb20494-76cd-459c-8889-cfb55877f47a",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute14",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704303Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704303Z",
+						"id": "e23b65c4-c959-48af-9fdd-1467d4dbf339",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"displayName": "CustomAttribute15",
+						"value": "",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704323Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704324Z",
+						"id": "221cc5ae-3cf5-4a62-b725-47c9ef5223ae",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					}
+				],
+				"educationalActivities": [],
+				"names": [
+					{
+						"displayName": "Fahrizi, Ahmad Luthfi (IDN)",
+						"first": "Ahmad Luthfi",
+						"initials": "",
+						"last": "Fahrizi",
+						"languageTag": null,
+						"maiden": null,
+						"middle": null,
+						"nickname": null,
+						"suffix": null,
+						"title": null,
+						"allowedAudiences": "organization, federatedOrganizations",
+						"createdDateTime": "2025-02-20T14:26:49.5704226Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704229Z",
+						"id": "AadSource",
+						"isSearchable": false,
+						"pronunciation": null,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					}
+				],
+				"emails": [
+					{
+						"address": "AhmadLuthfi.Fahrizi@collins.com",
+						"displayName": null,
+						"type": "main",
+						"allowedAudiences": "organization, federatedOrganizations",
+						"createdDateTime": "2025-02-20T14:26:49.570423Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.570423Z",
+						"id": "1a90929d-ffb8-43b2-96fd-84d991a0a299",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"address": "E40098919@adxuser.com",
+						"displayName": null,
+						"type": "work",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.570424Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.570424Z",
+						"id": "b85ee716-4341-4a64-a1c8-153eeebba251",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"address": "AhmadLuthfi.Fahrizi@collinsaerospace.com",
+						"displayName": null,
+						"type": "work",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704241Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704241Z",
+						"id": "8219b2eb-d3b0-4fb2-aa59-435e2fe5a1b8",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"address": "E40098919_Collins@rtxusers.mail.onmicrosoft.us",
+						"displayName": null,
+						"type": "work",
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.5704241Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704242Z",
+						"id": "60f3fa31-ca2e-4635-9c6f-9685cf9f6550",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					}
+				],
+				"notes": [],
+				"interests": [],
+				"languages": [
+					{
+						"displayName": "English (United States)",
+						"tag": "en-US",
+						"spoken": null,
+						"written": null,
+						"reading": null,
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-04-21T13:18:58.369167Z",
+						"lastModifiedDateTime": "2025-04-21T13:18:58.3691671Z",
+						"id": "09e32284-e538-4527-93fc-d8f3db4e2582",
+						"isSearchable": false,
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					}
+				],
+				"phones": [],
+				"positions": [
+					{
+						"categories": [],
+						"isCurrent": true,
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-20T14:26:49.570426Z",
+						"lastModifiedDateTime": "2025-06-16T11:03:21.7371243Z",
+						"id": "6fde0de7-db97-49e2-ba74-90998343d51a",
+						"isSearchable": false,
+						"detail": {
+							"description": null,
+							"endMonthYear": "0001-01-01T00:00:00Z",
+							"jobTitle": "QMS APPRENTICE",
+							"role": null,
+							"startMonthYear": "0001-01-01T00:00:00Z",
+							"summary": null,
+							"level": "",
+							"layer": null,
+							"secondaryJobTitle": null,
+							"secondaryRole": null,
+							"employeeId": null,
+							"employeeType": null,
+							"company": {
+								"displayName": "Collins Aerospace",
+								"pronunciation": null,
+								"department": "Quality",
+								"companyCode": null,
+								"officeLocation": "",
+								"webUrl": null,
+								"secondaryDepartment": null,
+								"costCenter": null,
+								"division": null,
+								"address": {
+									"type": "business",
+									"postOfficeBox": null,
+									"street": "Jl. Soekarno Hatta No.35A Blok Gempol (Depan MAPOLDA JABAR) Kecamatan Mekarmulya, Kelurahan Panyileukan Bandung",
+									"city": "Bandung",
+									"state": "JB",
+									"countryOrRegion": "ID",
+									"postalCode": "40614"
+								}
+							}
+						},
+						"manager": {
+							"displayName": "Susanti, Novi (IDN)",
+							"relationship": "manager",
+							"userPrincipalName": "E10910294@adxuser.com",
+							"userId": "ee1bddce-26ca-42e4-92a4-7c485adba6f9"
+						},
+						"colleagues": [],
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "ManagerChain",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					},
+					{
+						"categories": [],
+						"isCurrent": true,
+						"allowedAudiences": "federatedOrganizations",
+						"createdDateTime": "2025-02-20T14:26:49.5704267Z",
+						"lastModifiedDateTime": "2025-02-20T14:26:49.5704268Z",
+						"id": "c63e6288-6135-4d58-a028-1b1cc1503fb9",
+						"isSearchable": false,
+						"detail": {
+							"description": null,
+							"endMonthYear": "0001-01-01T00:00:00Z",
+							"jobTitle": "",
+							"role": null,
+							"startMonthYear": "0001-01-01T00:00:00Z",
+							"summary": null,
+							"level": "",
+							"layer": null,
+							"secondaryJobTitle": null,
+							"secondaryRole": null,
+							"employeeId": null,
+							"employeeType": null,
+							"company": {
+								"displayName": "Collins Aerospace",
+								"pronunciation": null,
+								"department": null,
+								"companyCode": null,
+								"officeLocation": null,
+								"webUrl": null,
+								"secondaryDepartment": null,
+								"costCenter": null,
+								"division": null,
+								"address": null
+							}
+						},
+						"manager": null,
+						"colleagues": [],
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					}
+				],
+				"projects": [],
+				"responsibilities": [],
+				"skills": [],
+				"topics": [],
+				"webAccounts": [
+					{
+						"userId": "SIP:ahmadluthfi.fahrizi@collins.com",
+						"description": "Address used for interacting with a user through instant messaging services",
+						"statusMessage": null,
+						"webUrl": null,
+						"allowedAudiences": "organization",
+						"createdDateTime": "2025-02-21T01:14:10.6346191Z",
+						"lastModifiedDateTime": "2025-02-21T01:14:10.6346192Z",
+						"id": "b4f4b50d-e32d-4361-85ee-3fa60400535a",
+						"isSearchable": false,
+						"service": {
+							"name": "Microsoft Teams for Business",
+							"webUrl": "graph.microsoft.com/teams"
+						},
+						"createdBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"inference": null,
+						"lastModifiedBy": {
+							"user": null,
+							"application": {
+								"displayName": "AAD",
+								"id": null
+							},
+							"device": null
+						},
+						"source": {
+							"type": [
+								"AAD"
+							]
+						},
+						"sources": [
+							{
+								"id": "4ce763dd-9214-4eff-af7c-da491cc3782d"
+							}
+						]
+					}
+				],
+				"websites": [],
+				"awards": [],
+				"publications": [],
+				"patents": [],
+				"certifications": [],
+				"extensions": [],
+				"photos": [],
+				"profileVideoMetadata": {
+					"profileVideoUrl": null,
+					"allowedAudiences": "organization",
+					"createdDateTime": "2025-02-20T14:26:48.9569166Z",
+					"lastModifiedDateTime": "2025-02-20T14:26:48.9569166Z",
+					"id": "3ac52eed-3bed-445d-ac6d-4d1289d84570",
+					"isSearchable": false,
+					"createdBy": {
+						"user": null,
+						"application": null,
+						"device": null
+					},
+					"inference": null,
+					"lastModifiedBy": {
+						"user": null,
+						"application": null,
+						"device": null
+					},
+					"source": {
+						"type": [
+							"User"
+						]
+					},
+					"sources": [
+						{
+							"id": "46a57efc-33f8-4eec-a512-b90039ad6187"
+						}
+					]
+				},
+				"summary": null
+			}
+		},
+		{
+			"name": "Pronouns",
+			"data": []
+		}
+	]
+}

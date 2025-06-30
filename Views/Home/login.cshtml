@@ -1,0 +1,37 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    Layout = "_login";
+
+}
+<form asp-action="login" method="POST" class="form login" asp-route-id="@ViewBag.id">
+
+    <div class="form__field">
+        <label for="login__username">
+            <svg class="icon">
+                <use xlink:href="#icon-user"></use>
+            </svg><span class="hidden">Username</span>
+        </label>
+        <input autocomplete="username" id="login__username" type="text" name="login__username" class="form__input" placeholder="Username" required>
+    </div>
+
+    <div class="form__field">
+        <label for="login__password">
+            <svg class="icon">
+                <use xlink:href="#icon-lock"></use>
+            </svg><span class="hidden">Password </span>
+        </label>
+        <input id="login__password" type="password" name="login__password" class="form__input" placeholder="Password" required>
+    </div>
+
+    <div class="form__field">
+        @ViewBag.status <br />
+        @if (ViewBag.SessionExpired != null)
+        {
+            <div class="alert alert-warning">@ViewBag.SessionExpired</div>
+        }
+        <input type="submit" value="Sign In">
+    </div>
+
+</form>

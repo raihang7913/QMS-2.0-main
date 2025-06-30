@@ -1,0 +1,625 @@
+﻿@model QMS.Models.DOCREQ
+
+@{
+    ViewData["Title"] = "Approval";
+    string finalapp = "style = 'display:none'";
+    string finalapplabel = "";
+    if (Model.Finalapprovername == ViewBag.loginuser) {
+        finalapp = "";
+        finalapplabel = "style = 'display:none'";
+    }
+    string smeapp = "style = 'display:none'";   string smeapplabel = "";
+    if (Model.SMEname == ViewBag.loginuser && !string.IsNullOrEmpty(Model.Finalapproverdecision) && Model.Closestatus != "Reject") {   smeapp = "";    smeapplabel = "style = 'display:none'"; }
+
+    string itcapp = "style = 'display:none'";   string itcapplabel = "";
+    if (Model.ITCname == ViewBag.loginuser && !string.IsNullOrEmpty(Model.SMEapproverdecision) && Model.Closestatus != "Reject") { itcapp = ""; itcapplabel = "style = 'display:none'"; }
+
+    string asapp = "style = 'display:none'";   string asapplabel = "";
+    if (Model.QMSASname == ViewBag.loginuser && !string.IsNullOrEmpty(Model.ITCapproverdecision) && Model.Closestatus != "Reject") { asapp = ""; asapplabel = "style = 'display:none'"; }
+
+    string nadcapapp = "style = 'display:none'";   string nadcapapplabel = "";
+    if (Model.QMSNADCAPname == ViewBag.loginuser && !string.IsNullOrEmpty(Model.QMSASapproverdecision) && Model.Closestatus != "Reject") { nadcapapp = ""; nadcapapplabel = "style = 'display:none'"; }
+
+    string docconapp = "style = 'display:none'";   string docconapplabel = "";
+    if (Model.Doccontrollername == ViewBag.loginuser && !string.IsNullOrEmpty(Model.QMSNADCAPapproverdecision) && Model.Closestatus != "Reject") { docconapp = ""; docconapplabel = "style = 'display:none'"; }
+
+
+
+}
+<style>
+    td {
+        padding-right: 10px;
+        padding-left: 10px;
+        border: solid 3px black;
+    }
+</style>
+
+<h2 style="text-align:center">APPROVAL</h2>
+<form asp-action="Approval" asp-route-id="@Model.Id">
+    <div>
+        <h5>Document Request Form</h5>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Reqtype)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @Html.DisplayFor(model => model.Reqtype)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.documentReason)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @Html.DisplayFor(model => model.documentReason)
+            </dd>
+            <dd class="col-sm-12" style="border-top:solid 1px black;border-bottom:solid 1px black;text-align:center;padding:5px;">
+                <strong> SECTION 1 - Functional Group Owner </strong>
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Functgroup)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @{ string fgroup = Model.Functgroup;
+                    if (Model.Functgroup == "others") { fgroup = Model.FunctgroupOthers; }
+                }
+                @fgroup
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Docnumber)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @Html.DisplayFor(model => model.Docnumber)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.LinkDoc)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                <!--<a href="@Html.DisplayFor(model => model.LinkDoc)">@Html.DisplayFor(model => model.LinkDoc)</a>-->
+                <a href="~/NOVI.SUSANTI/@Model.LinkDoc" target="_blank">@Model.LinkDoc</a>
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Associateddoc)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @Html.DisplayFor(model => model.Associateddoc)
+            </dd>
+            <dt class="col-sm-12">
+                list document :
+            </dt>
+            <dd class="col-sm-12">
+                <table>
+                    <tr style="font-weight:bold; color:black;">
+                        <td rowspan="2">Document Type</td>
+                        <td colspan="8">Review Result of Associated Document (Type/Number/Revision Result)</td>
+
+                    </tr>
+                    <tr style="font-weight:bold; color:black;">
+                        <td width="40">PRO</td>
+                        <td width="40">WI</td>
+                        <td width="40">WS</td>
+                        <td width="40">TS</td>
+                        <td width="40">FRM</td>
+                        <td width="40">APPM</td>
+                        <td>List of Document(s)</td>
+                        <td>Document Affected</td>
+                    </tr>
+                    @{
+                        string dtype = Model.Doctype;
+                        string PRO = "";
+                        string WI = "";
+                        string WS = "";
+                        string TS = "";
+                        string FRM = "";
+                        string APPM = "";
+                        if (dtype == "POL" || dtype == "WI" || dtype == "FRM")
+                        {
+                            PRO = "X";
+                        }
+                        if (dtype == "PRO" || dtype == "TS")
+                        {
+                            WI = "X";
+                        }
+                        if (dtype == "TS")
+                        {
+                            WS = "X";
+                        }
+                        if (dtype == "TS" || dtype == "WS")
+                        {
+                            TS = "X";
+                        }
+                        if (dtype == "POL" || dtype == "PRO" || dtype == "WI" || dtype == "WS")
+                        {
+                            FRM = "X";
+                        }
+                        if (dtype == "WS" || dtype == "TS")
+                        {
+                            APPM = "X";
+                        }
+                        string Tname = "";
+                        if (dtype == "POL")
+                        {
+                            Tname = "Policy (POL)";
+                        }
+                        else if (dtype == "PRO")
+                        {
+                            Tname = "Procedure (PRO)";
+                        }
+                        else if (dtype == "WI")
+                        {
+                            Tname = "Work Instruction (WI)";
+                        }
+                        else if (dtype == "WS")
+                        {
+                            Tname = "Work Standard (WS)";
+                        }
+                        else if (dtype == "TS")
+                        {
+                            Tname = "Technique Sheet (TS)";
+                        }
+                        else if (dtype == "FRM")
+                        {
+                            Tname = "Form (FRM)";
+                        }
+
+                    }
+                    <tr>
+                        <td>@Tname</td>
+                        <td>@PRO</td>
+                        <td>@WI</td>
+                        <td>@WS</td>
+                        <td>@TS</td>
+                        <td>@FRM</td>
+                        <td>@APPM</td>
+                        <td>
+                            @{
+                                if (!string.IsNullOrEmpty(Model.Listdoc1))
+                                {
+                                    @Model.Listdoc1 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc2))
+                                {
+                                    @Model.Listdoc2 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc3))
+                                {
+                                    @Model.Listdoc3 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc4))
+                                {
+                                    @Model.Listdoc4 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc5))
+                                {
+                                    @Model.Listdoc5 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc6))
+                                {
+                                    @Model.Listdoc6 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc7))
+                                {
+                                    @Model.Listdoc7 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc8))
+                                {
+                                    @Model.Listdoc8 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc9))
+                                {
+                                    @Model.Listdoc9 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc10))
+                                {
+                                    @Model.Listdoc10 <br />
+                                }
+                            }
+                        </td>
+                        <td>
+                            @{
+                                if (!string.IsNullOrEmpty(Model.Listdoc1))
+                                {
+                                    @Model.Listdocaffected1 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc2))
+                                {
+                                    @Model.Listdocaffected2 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc3))
+                                {
+                                    @Model.Listdocaffected3 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc4))
+                                {
+                                    @Model.Listdocaffected4 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc5))
+                                {
+                                    @Model.Listdocaffected5 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc6))
+                                {
+                                    @Model.Listdocaffected6 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc7))
+                                {
+                                    @Model.Listdocaffected7 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc8))
+                                {
+                                    @Model.Listdocaffected8 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc9))
+                                {
+                                    @Model.Listdocaffected9 <br />
+                                }
+                                if (!string.IsNullOrEmpty(Model.Listdoc10))
+                                {
+                                    @Model.Listdocaffected10 <br />
+                                }
+                            }
+                        </td>
+                    </tr>
+                </table>
+
+            </dd>
+
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Superseededdoc)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @Html.DisplayFor(model => model.Superseededdoc)
+            </dd>
+            <dd class="col-sm-12" style="border-top:solid 1px black;border-bottom:solid 1px black;text-align:center;padding:5px;">
+                <strong> SECTION 2 - Response Timeframe </strong>
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Reqinitiatedate)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @Html.DisplayFor(model => model.Reqinitiatedate)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Prioritydoc)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @Html.DisplayFor(model => model.Prioritydoc)
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.AuditNo)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @Html.DisplayFor(model => model.AuditNo)
+            </dd>
+            <dd class="col-sm-12" style="border-top:solid 1px black;border-bottom:solid 1px black;text-align:center;padding:5px;">
+                <strong> SECTION 3 - Change of This Document Reviewed By </strong>
+            </dd>
+            <dt class="col-sm-3">
+                @Html.DisplayNameFor(model => model.Docowner)
+            </dt>
+            <dd class="col-sm-9">
+                :
+                @Html.DisplayFor(model => model.Docowner) <i>(@Html.DisplayFor(model => model.Docownerdate))</i>
+            </dd>
+            <div class="col-sm-4">
+                <div class="card card-primary">
+                    <div class="card-header">Final Approval</div>
+                    <div class="card-body">
+            <dt class="col-sm-12">
+                @Html.DisplayNameFor(model => model.Finalapprovername)
+            </dt>
+            <dd class="col-sm-12">
+                :
+                @Html.DisplayFor(model => model.Finalapprovername)
+            </dd>
+            <dt class="col-sm-12">
+                @Html.DisplayNameFor(model => model.Finalapproverdate)
+            </dt>
+            <dd class="col-sm-12">
+                :
+                @Html.DisplayFor(model => model.Finalapproverdate)
+            </dd>
+            <div class="form-group" @Html.Raw(finalapplabel)>
+                <label asp-for="Finalapproverdecision" class="control-label"></label>
+                @Html.DisplayFor(model => model.Finalapproverdecision)
+                <span asp-validation-for="Finalapproverdecision" class="text-danger"></span>
+            </div>
+            <div class="form-group" @Html.Raw(finalapplabel)>
+                <label asp-for="Finalapprovernote" class="control-label"></label>
+                @Html.DisplayFor(model => model.Finalapprovernote)
+                <span asp-validation-for="Finalapprovernote" class="text-danger"></span>
+            </div>
+
+            <div class="form-group" @Html.Raw(finalapp)>
+                <label asp-for="Finalapproverdecision" class="control-label"></label>
+                <select asp-for="Finalapproverdecision" class="form-control">
+                    <option value=""> </option>
+                    <option value="approved"> Approved</option>
+                    <option value="reject"> Reject</option>
+                </select>
+                <span asp-validation-for="Finalapproverdecision" class="text-danger"></span>
+            </div>
+            <div class="form-group" @Html.Raw(finalapp)>
+                <label asp-for="Finalapprovernote" class="control-label"></label>
+                <textarea asp-for="Finalapprovernote" class="form-control"></textarea>
+                <span asp-validation-for="Finalapprovernote" class="text-danger"></span>
+            </div>
+</div>
+    </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card card-success">
+            <div class="card-header">SME Approval</div>
+            <div class="card-body">
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.SMEname)
+                </dt>
+                <dd class="col-sm-12">
+                    :
+                    @Html.DisplayFor(model => model.SMEname)
+                </dd>
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.SMEdate)
+                </dt>
+                <dd class="col-sm-9">
+                    :
+                    @Html.DisplayFor(model => model.SMEdate)
+                </dd>
+                
+                <div class="form-group" @Html.Raw(smeapplabel)>
+                    <label asp-for="SMEapproverdecision" class="control-label"></label>
+                    @Html.DisplayFor(model => model.SMEapproverdecision)
+                    <span asp-validation-for="SMEapproverdecision" class="text-danger"></span>
+                </div>
+                <div class="form-group" @Html.Raw(smeapplabel)>
+                    <label asp-for="SMEapprovernote" class="control-label"></label>
+                    @Html.DisplayFor(model => model.SMEapprovernote)
+                    <span asp-validation-for="SMEapprovernote" class="text-danger"></span>
+                </div>
+                <div class="form-group" @Html.Raw(smeapp)>
+                    <label asp-for="SMEapproverdecision" class="control-label"></label>
+                    <select asp-for="SMEapproverdecision" class="form-control">
+                        <option value=""> </option>
+                        <option value="approved"> Approved</option>
+                        <option value="reject"> Reject</option>
+                    </select>
+                    <span asp-validation-for="SMEapproverdecision" class="text-danger"></span>
+                </div>
+                <div class="form-group" @Html.Raw(smeapp)>
+                    <label asp-for="SMEapprovernote" class="control-label"></label>
+                    <textarea asp-for="SMEapprovernote" class="form-control"></textarea>
+                    <span asp-validation-for="SMEapprovernote" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card card-info">
+            <div class="card-header">ITC Approval</div>
+            <div class="card-body">
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.ITCname)
+                </dt>
+                <dd class="col-sm-12">
+                    :
+                    @Html.DisplayFor(model => model.ITCname)
+                </dd>
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.ITCdate)
+                </dt>
+                <dd class="col-sm-9">
+                    :
+                    @Html.DisplayFor(model => model.ITCdate)
+                </dd>
+                
+                <div class="form-group" @Html.Raw(itcapplabel)>
+                    <label asp-for="ITCapproverdecision" class="control-label"></label>
+                    @Html.DisplayFor(model => model.ITCapproverdecision)
+                </div>
+                <div class="form-group" @Html.Raw(itcapplabel)>
+                    <label asp-for="ITCapprovernote" class="control-label"></label>
+                    @Html.DisplayFor(model => model.ITCapprovernote)
+               
+                    <div class="form-group">
+                        <label asp-for="TechnicalData" class="control-label"></label>
+                        @Html.DisplayFor(model => model.TechnicalData)
+                        
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SmartsolveUpload" class="control-label"></label>
+                        @Html.DisplayFor(model => model.SmartsolveUpload)
+                        
+                    </div>
+                </div>
+
+                <div class="form-group" @Html.Raw(itcapp)>
+                    <label asp-for="ITCapproverdecision" class="control-label"></label>
+                    <select asp-for="ITCapproverdecision" class="form-control">
+                        <option value=""> </option>
+                        <option value="approved"> Approved</option>
+                        <option value="reject"> Reject</option>
+                    </select>
+                    <span asp-validation-for="ITCapproverdecision" class="text-danger"></span>
+                </div>
+                <div class="form-group" @Html.Raw(itcapp)>
+                    <label asp-for="ITCapprovernote" class="control-label"></label>
+                    <textarea asp-for="ITCapprovernote" class="form-control"></textarea>
+                    <span asp-validation-for="ITCapprovernote" class="text-danger"></span>
+
+                    <div class="form-group">
+                        <label asp-for="TechnicalData" class="control-label"></label>
+                        @Html.DisplayFor(model => model.ITCapprovernote)
+                        <select asp-for="TechnicalData" class="form-control">
+                            <option value="yes"> Yes</option>
+                            <option value="no"> No</option>
+                        </select>
+                        <span asp-validation-for="TechnicalData" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="SmartsolveUpload" class="control-label"></label>
+                        @Html.DisplayFor(model => model.ITCapprovernote)
+                        <select asp-for="SmartsolveUpload" class="form-control">
+                            <option value="yes"> Yes</option>
+                            <option value="no"> No</option>
+                        </select>
+                        <span asp-validation-for="SmartsolveUpload" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card card-info">
+            <div class="card-header">QMS AS9100 Approval</div>
+            <div class="card-body">
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.QMSASname)
+                </dt>
+                <dd class="col-sm-12">
+                    :
+                    @Html.DisplayFor(model => model.QMSASname)
+                </dd>
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.QMSASdate)
+                </dt>
+                <dd class="col-sm-9">
+                    :
+                    @Html.DisplayFor(model => model.QMSASdate)
+                </dd>
+                <div class="form-group" @Html.Raw(asapplabel)>
+                    <label asp-for="QMSASapproverdecision" class="control-label"></label>
+                    @Html.DisplayFor(model => model.QMSASapproverdecision)
+                    
+                </div>
+                <div class="form-group" @Html.Raw(asapplabel)>
+                    <label asp-for="QMSASapprovernote" class="control-label"></label>
+                    @Html.DisplayFor(model => model.QMSASapprovernote)
+                    
+                </div>
+                <div class="form-group" @Html.Raw(asapp)>
+                    <label asp-for="QMSASapproverdecision" class="control-label"></label>
+                    <select asp-for="QMSASapproverdecision" class="form-control">
+                        <option value=""> </option>
+                        <option value="approved"> Approved</option>
+                        <option value="reject"> Reject</option>
+                    </select>
+                    <span asp-validation-for="QMSASapproverdecision" class="text-danger"></span>
+                </div>
+                <div class="form-group" @Html.Raw(asapp)>
+                    <label asp-for="QMSASapprovernote" class="control-label"></label>
+                    <textarea asp-for="QMSASapprovernote" class="form-control"></textarea>
+                    <span asp-validation-for="QMSASapprovernote" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card card-info">
+            <div class="card-header">QMS NADCAP Approval</div>
+            <div class="card-body">
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.QMSNADCAPname)
+                </dt>
+                <dd class="col-sm-12">
+                    :
+                    @Html.DisplayFor(model => model.QMSNADCAPname)
+                </dd>
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.QMSNADCAPdate)
+                </dt>
+                <dd class="col-sm-9">
+                    :
+                    @Html.DisplayFor(model => model.QMSNADCAPdate)
+                </dd>
+                <div class="form-group" @Html.Raw(nadcapapplabel)>
+                    <label asp-for="QMSNADCAPapproverdecision" class="control-label"></label>
+                    @Html.DisplayFor(model => model.QMSNADCAPapproverdecision)
+                </div>
+                <div class="form-group" @Html.Raw(nadcapapplabel)>
+                    <label asp-for="QMSNADCAPapprovernote" class="control-label"></label>
+                    @Html.DisplayFor(model => model.QMSNADCAPapprovernote)
+                </div>
+                <div class="form-group" @Html.Raw(nadcapapp)>
+                    <label asp-for="QMSNADCAPapproverdecision" class="control-label"></label>
+                    <select asp-for="QMSNADCAPapproverdecision" class="form-control">
+                        <option value=""> </option>
+                        <option value="approved"> Approved</option>
+                        <option value="reject"> Reject</option>
+                    </select>
+                    <span asp-validation-for="QMSNADCAPapproverdecision" class="text-danger"></span>
+                </div>
+                <div class="form-group" @Html.Raw(nadcapapp)>
+                    <label asp-for="QMSNADCAPapprovernote" class="control-label"></label>
+                    <textarea asp-for="QMSNADCAPapprovernote" class="form-control"></textarea>
+                    <span asp-validation-for="QMSNADCAPapprovernote" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-4">
+        <div class="card card-info">
+            <div class="card-header">Document Controll Approver</div>
+            <div class="card-body">
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.Doccontrollername)
+                </dt>
+                <dd class="col-sm-12">
+                    :
+                    @Html.DisplayFor(model => model.Doccontrollername)
+                </dd>
+                <dt class="col-sm-12">
+                    @Html.DisplayNameFor(model => model.Doccontrollerdate)
+                </dt>
+                <dd class="col-sm-9">
+                    :
+                    @Html.DisplayFor(model => model.Doccontrollerdate)
+                </dd>
+
+                <div class="form-group" @Html.Raw(docconapplabel)>
+                    <label asp-for="Doccontrolleapproverdecision" class="control-label"></label>
+                    @Html.DisplayFor(model => model.Doccontrolleapproverdecision)
+                    <span asp-validation-for="Doccontrolleapproverdecision" class="text-danger"></span>
+                </div>
+                <div class="form-group" @Html.Raw(docconapplabel)>
+                    <label asp-for="Doccontrolleapprovernote" class="control-label"></label>
+                    @Html.DisplayFor(model => model.Doccontrolleapprovernote)
+                    <span asp-validation-for="Doccontrolleapprovernote" class="text-danger"></span>
+                </div>
+                <div class="form-group" @Html.Raw(docconapp)>
+                    <label asp-for="Doccontrolleapproverdecision" class="control-label"></label>
+                    <select asp-for="Doccontrolleapproverdecision" class="form-control">
+                        <option value=""> </option>
+                        <option value="approved"> Approved</option>
+                        <option value="reject"> Reject</option>
+                    </select>
+                    <span asp-validation-for="Doccontrolleapproverdecision" class="text-danger"></span>
+                </div>
+                <div class="form-group" @Html.Raw(docconapp)>
+                    <label asp-for="Doccontrolleapprovernote" class="control-label"></label>
+                    <textarea asp-for="Doccontrolleapprovernote" class="form-control"></textarea>
+                    <span asp-validation-for="Doccontrolleapprovernote" class="text-danger"></span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    </dl>
+    </div>
+    <div>
+        <input type="submit" value="Submit" class="btn btn-primary" />
+    </div>
+
+</form>
+
+<a asp-action="List" style="position : fixed ; bottom : 10px; right: 10px; z-index : 9999;" class="btn btn-warning">Back</a>
